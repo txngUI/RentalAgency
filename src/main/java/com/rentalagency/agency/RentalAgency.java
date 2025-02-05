@@ -68,10 +68,7 @@ public class RentalAgency {
      * @param criterion the criterion to satisfy
      */
     public void printSelectedVehicles(Predicate<Vehicle> criterion) {
-        List<Vehicle> selectedVehicles = select(criterion);
-        for (Vehicle vehicle : selectedVehicles) {
-            System.out.println(vehicle + "\n");
-        }
+        select(criterion).forEach(System.out::println);
     }
 
     /**

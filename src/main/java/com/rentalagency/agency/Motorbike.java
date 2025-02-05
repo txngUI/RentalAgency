@@ -33,6 +33,6 @@ public class Motorbike extends AbstractVehicle {
      */
     @Override
     public String toString() {
-        return "Motorbike, " + brand + ", " + model + ", " + productionYear + ", " +  cylinderCapacity + "cm3 :" + dailyRentalPrice() + "€/day";
+        return "Motorbike, " + getBrand() + ", " + getModel() + ", " + getProductionYear() + ", " +  cylinderCapacity + "cm3 :" + dailyRentalPrice() + "€/day";
     }
 }

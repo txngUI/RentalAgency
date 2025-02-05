@@ -10,7 +10,8 @@ public class Car extends AbstractVehicle implements Vehicle {
 
     /**
      * Constructor : creates a new Car with the given brand, model, production year and number of seats
-     * @param brand : the brand of the car
+     *
+     * @param brand          : the brand of the car
      * @param model
      * @param productionYear
      * @param numberOfSeats
@@ -27,6 +28,7 @@ public class Car extends AbstractVehicle implements Vehicle {
 
     /**
      * Set the rental price of the car
+     *
      * @return the rental price of the car
      */
     @Override
@@ -36,10 +38,21 @@ public class Car extends AbstractVehicle implements Vehicle {
 
     /**
      * Return the string representation of the car
+     *
      * @return the string representation of the car
      */
     @Override
     public String toString() {
-        return "Car, " + brand + ", " + model + ", " + productionYear + ", " +  numberOfSeats + " seats :" + dailyRentalPrice() + "€/day";
+        return "Car, " + getBrand() + ", " + getModel() + ", " + getProductionYear() + ", "
+                + numberOfSeats + " seats : " + String.format("%.1f", dailyRentalPrice()) + "€/day";
+    }
+
+    /**
+     * Return the string representation of the vehicle
+     *
+     * @return the string representation of the vehicle
+     */
+    public boolean isNew() {
+        return TimeProvider.currentYearValue() - getProductionYear() <= 5;
     }
 }

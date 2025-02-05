@@ -14,7 +14,7 @@ public abstract class AbstractVehicle implements Vehicle {
      * @param productionYear : the production year of the vehicle
      */
     public AbstractVehicle(String brand, String model, int productionYear) {
-        if (productionYear > 2021 || productionYear < 1900) {
+        if (productionYear > TimeProvider.currentYearValue() || productionYear < 1900) {
             throw new IllegalArgumentException("L'année de production doit être comprise entre 1900 et l'année actuelle," +
                     " votre année de production est égale à : " + productionYear);
         }
@@ -58,14 +58,12 @@ public abstract class AbstractVehicle implements Vehicle {
      */
     @Override
     public boolean equals(Object o) {
-        return this == o;
-    }
+        if (this == o) return true;
 
-    /**
-     * Return the string representation of the vehicle
-     * @return the string representation of the vehicle
-     */
-    public boolean isNew() {
-        return TimeProvider.currentYearValue() - productionYear <= 5;
+        AbstractVehicle that = (AbstractVehicle) o;
+
+        return productionYear == that.productionYear &&
+                brand.equals(that.brand) &&
+                model.equals(that.model);
     }
 }
